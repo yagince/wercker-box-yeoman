@@ -47,6 +47,7 @@ script: |
   curl -sSL https://get.rvm.io | bash -s stable
   echo "bundler -v~>1.9.0" > $HOME/.rvm/gemsets/global.gems
   source $HOME/.rvm/scripts/rvm
+  rvm install 2.2.2
   rvm --default use 2.2.2
   echo "gem: --no-rdoc --no-ri" >> $HOME/.gemrc
 
