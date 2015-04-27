@@ -11,8 +11,9 @@ keywords:
   - grunt
   - bower
 script: |
+  # Node.js
   export NODEVERSION=0.12.2
-  sudo apt-get update
+  sudo apt-get update -y
   sudo apt-get install wget build-essential
   cd $HOME
   mkdir nodeinstall
@@ -26,3 +27,13 @@ script: |
   cd $HOME
   rm -fr nodeinstall
   node -v
+
+  # ruby
+  sudo apt-get install git zlib1g-dev libreadline-dev libqtwebkit-dev curl -y
+  sudo apt-get remove ruby1.9.1
+  gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
+  curl -sSL https://get.rvm.io | bash -s stable
+  echo "bundler -v~>1.9.0" > $HOME/.rvm/gemsets/global.gems
+  source $HOME/.rvm/scripts/rvm
+  rvm --default use 2.2.2
+  echo "gem: --no-rdoc --no-ri" >> $HOME/.gemrc
