@@ -60,8 +60,8 @@ script: |
   sudo npm install -g grunt-cli bower
 
   # install gems
-  sudo gem install bundler -v 1.9.4
-  sudo gem install compass -v 1.0.3
+  gem install bundler -v 1.9.4
+  gem install compass -v 1.0.3
 
   # phantomjs
   export PHANTOM_VERSION=2.0.0
