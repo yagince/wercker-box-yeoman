@@ -27,6 +27,11 @@ script: |
   cd $HOME
   rm -fr nodeinstall
   node -v
+  # npm
+  npm -v
+  sudo npm cache clean -f
+  sudo npm install -g n
+  sudo n stable
 
   # ruby
   sudo apt-get install git zlib1g-dev libreadline-dev libqtwebkit-dev curl -y
@@ -37,3 +42,21 @@ script: |
   source $HOME/.rvm/scripts/rvm
   rvm --default use 2.2.2
   echo "gem: --no-rdoc --no-ri" >> $HOME/.gemrc
+
+  # lftp
+  sudo apt-get install lftp
+  mkdir -p ~/.lftp
+  echo "set ssl:verify-certificate no" > ~/.lftp/rc  
+
+  # install global npm packages
+  sudo npm install -g grunt-cli bower
+
+  # install gems
+  sudo gem install bundler
+  sudo gem install compass
+
+  # phantomjs
+  export PHANTOM_VERSION=2.0.0
+  wget https://phantomjs.googlecode.com/files/phantomjs-$PHANTOM_VERSION-linux-x86_64.tar.bz2
+  tar xfj phantomjs-$PHANTOM_VERSION-linux-x86_64.tar.bz2
+  sudo cp phantomjs-$PHANTOM_VERSION-linux-x86_64/bin/phantomjs /usr/local/bin  
