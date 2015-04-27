@@ -1,0 +1,28 @@
+name : grunt-yeoman
+version : 0.0.1
+inherits : wercker/ubuntu12.04-webessentials@1.0.4
+type : main
+platform : ubuntu@12.04
+packages :
+  - nodejs@0.12.2
+keywords:
+  - nodejs
+  - yeoman
+  - grunt
+  - bower
+script: |
+  export NODEVERSION=0.12.2
+  sudo apt-get update
+  sudo apt-get install wget build-essential
+  cd $HOME
+  mkdir nodeinstall
+  cd nodeinstall
+  wget http://nodejs.org/dist/v$NODEVERSION/node-v$NODEVERSION.tar.gz
+  tar xzf node-v$NODEVERSION.tar.gz
+  cd node-v$NODEVERSION
+  ./configure
+  make
+  sudo make install
+  cd $HOME
+  rm -fr nodeinstall
+  node -v
