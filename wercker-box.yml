@@ -1,15 +1,22 @@
 name : grunt-yeoman
 version : 0.0.1
 inherits : wercker/ubuntu12.04-webessentials@1.0.4
+description : for Yeoman Project
 type : main
 platform : ubuntu@12.04
 packages :
   - nodejs@0.12.2
+  - ruby@2.2.2
+  - phantomjs@2.0.0
 keywords:
   - nodejs
   - yeoman
   - grunt
   - bower
+  - ruby
+  - rvm
+  - compass
+  - phantomjs
 script: |
   # Node.js
   export NODEVERSION=0.12.2
@@ -52,11 +59,11 @@ script: |
   sudo npm install -g grunt-cli bower
 
   # install gems
-  sudo gem install bundler
-  sudo gem install compass
+  sudo gem install bundler -v 1.9.4
+  sudo gem install compass -v 1.0.3
 
   # phantomjs
   export PHANTOM_VERSION=2.0.0
   wget https://phantomjs.googlecode.com/files/phantomjs-$PHANTOM_VERSION-linux-x86_64.tar.bz2
   tar xfj phantomjs-$PHANTOM_VERSION-linux-x86_64.tar.bz2
-  sudo cp phantomjs-$PHANTOM_VERSION-linux-x86_64/bin/phantomjs /usr/local/bin  
+  sudo cp phantomjs-$PHANTOM_VERSION-linux-x86_64/bin/phantomjs /usr/local/bin
