@@ -1,5 +1,5 @@
 name : grunt-yeoman
-version : 0.0.1
+version : 0.0.2
 inherits : wercker/ubuntu12.04-webessentials@1.0.4
 description : for Yeoman Project
 type : main
@@ -45,23 +45,23 @@ script: |
   sudo apt-get remove ruby1.9.1
   gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
   curl -sSL https://get.rvm.io | bash -s stable
-  echo "bundler -v~>1.9.0" > $HOME/.rvm/gemsets/global.gems
+  echo "bundler -v~>1.9.4" > $HOME/.rvm/gemsets/global.gems
   source $HOME/.rvm/scripts/rvm
   rvm install 2.2.2
   rvm --default use 2.2.2
   echo "gem: --no-rdoc --no-ri" >> $HOME/.gemrc
 
-  # lftp
-  sudo apt-get install lftp
-  mkdir -p ~/.lftp
-  echo "set ssl:verify-certificate no" > ~/.lftp/rc  
-
-  # install global npm packages
-  sudo npm install -g grunt-cli bower
-
   # install gems
   gem install bundler -v 1.9.4
   gem install compass -v 1.0.3
+
+  # lftp
+  sudo apt-get install lftp
+  mkdir -p ~/.lftp
+  echo "set ssl:verify-certificate no" > ~/.lftp/rc
+
+  # install global npm packages
+  sudo npm install -g grunt-cli bower
 
   # phantomjs
   export PHANTOM_VERSION=1.9.2
