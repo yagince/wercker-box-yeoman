@@ -6,6 +6,7 @@ type : main
 platform : ubuntu@12.04
 packages :
   - nodejs@0.12.2
+  - npm@2.7.4
   - ruby@2.2.2
   - bunder@1.9.4
   - compass@1.0.3
