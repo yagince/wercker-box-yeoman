@@ -1,5 +1,5 @@
 name : grunt-yeoman
-version : 0.0.2
+version : 0.0.3
 inherits : wercker/ubuntu12.04-webessentials@1.0.4
 description : wercker box for Yeoman Project
 type : main
