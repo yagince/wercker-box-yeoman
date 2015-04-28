@@ -1,5 +1,5 @@
 name : grunt-yeoman
-version : 0.0.3
+version : 0.0.4
 inherits : wercker/ubuntu12.04-webessentials@1.0.4
 description : wercker box for Yeoman Project
 type : main
@@ -10,7 +10,7 @@ packages :
   - ruby@2.2.2
   - bunder@1.9.4
   - compass@1.0.3
-  - phantomjs@1.9.2
+  - phantomjs@1.9.8
 keywords:
   - nodejs
   - yeoman
@@ -21,9 +21,16 @@ keywords:
   - compass
   - phantomjs
 script: |
+  sudo apt-get remove optipng
+  sudo apt-get update -y
+
+  # lftp
+  sudo apt-get install lftp
+  mkdir -p ~/.lftp
+  echo "set ssl:verify-certificate no" > ~/.lftp/rc
+
   # Node.js
   export NODEVERSION=0.12.2
-  sudo apt-get update -y
   sudo apt-get install wget build-essential
   cd $HOME
   mkdir nodeinstall
@@ -58,16 +65,11 @@ script: |
   gem install bundler -v 1.9.4
   gem install compass -v 1.0.3
 
-  # lftp
-  sudo apt-get install lftp
-  mkdir -p ~/.lftp
-  echo "set ssl:verify-certificate no" > ~/.lftp/rc
-
   # install global npm packages
   sudo npm install -g grunt-cli bower
 
   # phantomjs
-  export PHANTOM_VERSION=1.9.2
-  wget https://phantomjs.googlecode.com/files/phantomjs-$PHANTOM_VERSION-linux-x86_64.tar.bz2
+  export PHANTOM_VERSION=1.9.8
+  wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-${PHANTOM_VERSION}-linux-x86_64.tar.bz2
   tar xfj phantomjs-$PHANTOM_VERSION-linux-x86_64.tar.bz2
-  sudo cp phantomjs-$PHANTOM_VERSION-linux-x86_64/bin/phantomjs /usr/local/bin
+  sudo cp phantomjs-$PHANTOM_VERSION-linux-x86_64/bin/phantomjs /home/ubuntu/phantomjs/bin/phantomjs
