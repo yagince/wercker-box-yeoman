@@ -1,13 +1,15 @@
 name : grunt-yeoman
 version : 0.0.2
 inherits : wercker/ubuntu12.04-webessentials@1.0.4
-description : for Yeoman Project
+description : wercker box for Yeoman Project
 type : main
 platform : ubuntu@12.04
 packages :
   - nodejs@0.12.2
   - ruby@2.2.2
-  - phantomjs@2.0.0
+  - bunder@1.9.4
+  - compass@1.0.3
+  - phantomjs@1.9.2
 keywords:
   - nodejs
   - yeoman
